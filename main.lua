@@ -3,28 +3,35 @@ import "CoreLibs/object"
 import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/timer"
-import 'CoreLibs/ui/gridview.lua'
 import 'CoreLibs/nineslice'
-
+import 'CoreLibs/ui'
 import 'scenes/start'
 import 'scenes/1'
 
 gfx = playdate.graphics
-playdate.drawFPS()
+
 --local fonty = gfx.font.new('Roobert-11-Mono-Condensed')
 --gfx.setFont(fonty)
-playdate.graphics.drawText("pick ur title", 5, 5)
 
-
-local scene = "start"
-if scene == "start" then
-    help()
-elseif scene == "1" then
-    gfx.drawRoundRect(x, y, width, 20, 4)
+function startup()
+    scene = "start"
 end
 
-function playdate.update()
+startup()
 
-    gfx.drawRoundRect(1, 1, 5, 20, 4)
+function sceneSelect()
+    if scene == "start" then
+     startMenuDraw()
+     drawMenu()
+--ok it basically stops working here
+    elseif scene == "1" then
+     playdate.inputHandlers.pop()
+    end
+end
+
+
+function playdate.update()
+    playdate.timer.updateTimers()
+    sceneSelect()
 
 end
