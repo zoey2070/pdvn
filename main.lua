@@ -3,12 +3,20 @@ import "CoreLibs/object"
 import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 import "CoreLibs/timer"
+import "CoreLibs/animator"
+import "CoreLibs/easing"
 import 'CoreLibs/nineslice'
 import 'CoreLibs/ui'
 import 'scenes/start'
-import 'scenes/1'
-
+import 'scenes/one'
+import 'character'
+import 'dialoguesystem'
+import 'dialoguemeny'
+import 'sceneselect'
 gfx = playdate.graphics
+scene = nil
+
+
 
 --local fonty = gfx.font.new('Roobert-11-Mono-Condensed')
 --gfx.setFont(fonty)
@@ -18,20 +26,18 @@ function startup()
 end
 
 startup()
-
-function sceneSelect()
-    if scene == "start" then
-     startMenuDraw()
-     drawMenu()
---ok it basically stops working here
-    elseif scene == "1" then
-     playdate.inputHandlers.pop()
-    end
-end
-
+sceneSelect(scene)
 
 function playdate.update()
+    gfx.sprite.update()
     playdate.timer.updateTimers()
-    sceneSelect()
-
 end
+
+
+local mainInputHandlers = {
+
+    AButtonUp = function()
+        -- is this where it'd go? check the scene every "a" release
+		--sceneSelect(scene)
+    end,
+}
