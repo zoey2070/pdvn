@@ -1,0 +1,105 @@
+--metrics={"baseline":8,"xHeight":3,"capHeight":1,"pairs":{},"left":[],"right":[]}
+datalen=1852
+data=iVBORw0KGgoAAAANSUhEUgAAADIAAABkCAYAAADE6GNbAAAAAXNSR0IArs4c6QAABSZJREFUeF7tW+1y2zAMW9//obdLr8rRMECCkpy6WfdnaypT/ARAX/bx503+fHzF8TfEMz57fPT4HH8eR7Nn43PRdkzb43m8l51l54ZvT1/GIeb8MBodZkGpZzHQeI4lifUG+hADONyLgVTOx8uwWvIS4iFL4LZAhmPYFpjJrOWwDbANx8+qhVSiWOsfbMSLWQuprLPgVLt0Kuf4QO1lM6IyX4EBm4WHLXe+8F4FOKcZOSEAoEkG0ApRWItU7VElKEVL1SI/jl3+u0DYgN2qak5FFOszKM3QDFndmU0F56ckVoFUnMIQpcs7mJAK3SjMZ4FElmdSodJiEWUcCK2INlUVbitkDK0yGJUCtoKSKJlIxcQcWtWpyCCzjKEzR13hd0lF3EHOWgYrUvX+SsAH2aDglInJGOhsa62i1qGbKtRSDt+KQ1DI3c65jkNuRTo2v+Vs1P8K9ysYRXzHSnc5iKlgVBe4mH2ofSQ647J3HF5ckKrlSskgF8n+OsQ0G4grb1jFsVNK6I6BYLmYyKM6JxzMMss2Rxe62bkTs1c6KKuIQ4gqeOdeJo3ozK3OiOOM075svjqfPZmdoQIbWKWpFOIhe7PnUQ65qDXF7N/CDZ1L344QO8Hf8mzG7Ax+K4Z1UcYmui+DFfx+DnuFPBl6ICAwqN3hNAOAgzRaCQQ1FguqA6G49zBloKROqrWc1orQuSsQl0AP5zoVySRGpqtUpt3PWbJOwXYCeTysenU2kGHT0WipCHX2kRi9cyGyuRP8DKAcaIC1C2b+lryRaZ0f4bBy8q0kiiKsTtsxfFc8k1W+sqOetVbdyiGEUXkZoB47tz0Ql5Q6+7xyPKuQQlVERqq1sgrMZszJ/pImU2uoq6NWkG5WrLJukTOCDrpz0AlsNhBauVGRigQVo7t9r2A+2mW2WjPSyeJtz74VId42yx3HqorQt3rhggyOq9+xuazuk7FlgaT6/8viCq+oZ6dsVqig9FYlQrPMVjuNguVxJ/U52xCjs51NUu3uSLKxtZwNczxf8ojjOHu/5G6ALBDMMmVt50trmUSpBGEl/zvDvqUiqCSz1mBMzKqEM+TsNhgMdkhsrahIPlu0gt8MyjvoUlW3Qxn0bDeQjuZiwpPNxHIQlVDccsGrjHQr4vrVaTvXZnrurQJBJGLMGXsbYdfZKbYuUV/OHNCyw9hKIrCqViilOAjndthRfz8huRuIcpoFqRg/8pZSCug4Mv4pUTsCQemhbLLAqoxXvz9VhLFoxeKoCFhbsNlyq8eqEitz8C/TWizTW6DyAiPt10EX+DBt8qAyruKRae9mH6wCyeQ1Iknmg+p39Ywj6w8Q7u7smdOOHHEGtyLiJ0IBIX7aRl2PKJNxQTTM9g10DIFFKQJn2TtVTDnAspxlnrUCY29sJUV8CNGsI07wqzJbyYysIu7Mui2X+fJsLdX/VweiWgvJmfkRybecEQyw225OVaqKqJaKs/357wp+HWduceY3kFuUITjhYPYOdNoZN6UBFYjiDIfFdzrNbF0ayBWIlgVxuk8Nu1sRhM9M7K1WKrW9GsjAedRo6HS16zNJEm2ULb0aSKcipTPkG6+u6kj/15srUdzLvi2Q1Z5utcbqZb/MvprB3c9fVZEo0dkKu/3e7QaN79o7m2O7YDFbGRTHRQaHWP0uarRxRu0fbccVUSmJEZ1kGx17wcDQKuOb5SCyTDqYXwk6JSle3lp44UxFXrYCXDkj6qVBNVNTrea+jZ8y/sqHroDfV/r/vOsfuaaPZoIQgx0AAAAASUVORK5CYII=
+width=5
+height=10
+
+tracking=1
+
+0	5
+1	5
+2	5
+3	5
+4	5
+5	5
+6	5
+7	5
+8	5
+9	5
+space	5
+�	5
+!	1
+A	5
+m	5
+B	5
+C	5
+D	5
+E	5
+F	5
+G	5
+H	4
+I	5
+J	5
+K	5
+L	5
+M	5
+N	5
+O	5
+P	5
+Q	5
+R	5
+S	5
+T	5
+U	5
+V	5
+W	5
+X	5
+Y	5
+Z	5
+[	2
+\	5
+]	2
+^	5
+_	5
+`	2
+a	5
+b	5
+c	5
+d	5
+e	5
+f	5
+g	5
+h	5
+i	5
+j	5
+k	5
+l	5
+n	5
+o	5
+p	5
+q	5
+r	5
+s	5
+t	5
+u	5
+v	5
+w	5
+x	5
+y	5
+z	5
+{	3
+|	1
+}	3
+~	5
+"	3
+#	5
+$	5
+%	5
+&	5
+'	1
+(	2
+)	2
+*	5
++	5
+,	2
+-	5
+.	1
+/	5
+:	1
+;	2
+<	5
+=	5
+>	5
+?	5
+@	5
+

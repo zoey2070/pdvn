@@ -1,4 +1,4 @@
-if scene == "one" then
+--[[if scene == "one" then
     --playdate.graphics.fillRect(0, 0, 400, 240)
     playdate.drawFPS()
    -- playdate.graphics.setBackgroundColor(playdate.graphics.kColorBlack)
@@ -14,5 +14,5 @@ elseif scene == "two" then
     Namebox:add()
     drawText()
     drawName()
-end
+end --]]
 --so nothing in here runs for whampterever reason

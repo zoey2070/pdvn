@@ -5,14 +5,14 @@ function drawTextbox()
     --local textbox = playdate.ui.gridview.new(0, 15)
   --  textbox = playdate.graphics.nineSlice.new("assets/nineslice", 5, 6, 44, 40)
 
-  local textbox = playdate.graphics.nineSlice.new("assets/nineslice", 5, 6, 44, 40)
+  local textbox = nineslice
     gfx.pushContext(textbox)
      textbox:drawInRect(0,y,400,height)
     gfx.popContext()
     local spritetextbox = gfx.sprite.new(textbox)
-    spritetextbox:moveTo(0,150)
+    spritetextbox:moveTo(150,150) --0,150
     spritetextbox:add()
-    spritetextbox:setZIndex(50)
+    --spritetextbox:setZIndex(50)
 
     --drawText()
    -- drawNamebox()
@@ -46,7 +46,7 @@ function drawNamebox()
   --local textbox = playdate.ui.gridview.new(0, 15)
 --  textbox = playdate.graphics.nineSlice.new("assets/nineslice", 5, 6, 44, 40)
 
-local namebox = playdate.graphics.nineSlice.new("assets/nineslice", 5, 6, 44, 40)
+local namebox = playdate.graphics.nineSlice.new("assets/nineslice", 5, 6, 5, 4)
   gfx.pushContext(namebox)
    namebox:drawInRect(0,y,400,height)
   gfx.popContext()

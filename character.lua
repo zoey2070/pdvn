@@ -9,8 +9,10 @@ function Character:add()
 self.body:add()
 self.face:add()
 
-setZIndex(5)
 
+
+--self.face:setZIndex(45)
+--self.body:setZIndex(40)
 end
 
 function Character:moveTo(x,y)

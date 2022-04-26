@@ -5,13 +5,6 @@ local listview = playdate.ui.gridview.new(0, 15)
 local menuMax = #dialoguetest
 
 
-listview.backgroundImage = playdate.graphics.nineSlice.new("assets/nineslice", 5, 6, 44, 40)
-listview:setNumberOfRows(#dialoguetest)
-listview:setCellPadding(0, 0, 5, 5)
-listview:setContentInset(24, 24, 13, 13)
-
-
-
 function choiceMenuDraw()
     local menuInputHandler = {
         downButtonUp = function()
@@ -39,7 +32,7 @@ function choiceMenuDraw()
         end,
     }
     
-    listview.backgroundImage = playdate.graphics.nineSlice.new("assets/nineslice", 5, 6, 44, 40)
+    listview.backgroundImage = nineslice
     listview:setNumberOfRows(#dialoguetest)
     listview:setCellPadding(0, 0, 5, 5)
     listview:setContentInset(24, 24, 10, 13) --24/24/13/13
