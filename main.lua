@@ -42,8 +42,8 @@ end
 
 
 local mainInputHandlers = {
-
     AButtonUp = function()
+        print("a up main input")
         -- is this where it'd go? check the scene every "a" release
 		--sceneSelect(scene)
     end,

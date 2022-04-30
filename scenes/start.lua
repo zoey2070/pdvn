@@ -1,4 +1,4 @@
-
+--this works JUST FINE--
 local startMenu = {"Play", "Load", "Gallery", "Credits"}
 local selectedMenu = 1
 local listview = playdate.ui.gridview.new(0, 15)
@@ -13,7 +13,6 @@ local voice = playdate.sound.sampleplayer.new("assets/voicetest")
 
 local geo = playdate.geometry
 local Animator = playdate.graphics.animator
-
 
 
 
@@ -107,7 +106,7 @@ function playdate.AButtonUp()
 		gfx.drawTextAligned("Creidts",1,1,kTextAlignment.left)
 	else
 		--shouldn't ever get here in this menu...
-		playdate.simulator.exit()
+	print("ya fukt up")
 	end
 	blip:play(1)
 	function playdate.BButtonUp()

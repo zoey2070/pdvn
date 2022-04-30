@@ -7,27 +7,30 @@ end
 
 function Textboxes:add()
 self.dialogue:add()
-self.name:add()
-
+if activeName ~= nil then
+self.name:add(activeName)
+end
 end
 
 function Textboxes:moveTo()
 self.dialogue:moveTo(0,150)
-self.face:moveTo(x,y-50)
+self.name:moveTo(x,y-50)
 end
 
+------------fix below-------
 class('dialogue').extends(playdate.graphics.sprite)
 function dialogue:init()
     dialogue.super.init(self)
-    self:setImage(bodyImg)
+    self:setImage(nineslice)
 end
 
 class('name').extends(playdate.graphics.sprite)
-function CharacterFace:init()
-    CharacterFace.super.init(self)
-  self:setEmote(exprEmote.Neutral)
+function name:init()
+    name.super.init(self)
+  self:setImage(nineslice)
 end
 
-function CharacterFace:setName(CharName)
+-- ????
+function name:setName(CharName)
   self:setImage(exprImgTbl[exprEmote])
 end
