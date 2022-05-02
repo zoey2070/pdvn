@@ -1,6 +1,8 @@
 local music = playdate.sound.fileplayer.new("assets/8bitlovestory")
 function sceneSelect(scene)
   gfx.sprite.removeAll()
+  gfx.clear()
+  print(scene)
     if scene == "start" then
       gfx.setFont(fonty)
      startMenuDraw()
@@ -20,7 +22,8 @@ function sceneSelect(scene)
     --so now we need to return optionSelected to this shit.
     
     --THIS WORKS... maybe nest again??
-      if optionSelected == 1 then --so scene one AND next option is 1
+      if optionSelected == 1 and scene == "one" then --so scene one AND next option is 1
+        --might not work
       --  scene = "two"
      --   print("progress")
      --   sceneSelect(scene)

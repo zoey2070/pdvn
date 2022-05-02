@@ -12,9 +12,9 @@ import 'scenes/start'
 import 'scenes/one'
 import 'character'
 import 'dialoguesystem'
-import 'dialoguemeny'
-import 'sceneselect'
+--import 'sceneselect'
 import 'dialogueTWITTER'
+import 'sceneselect2'
 import 'menu'
 gfx = playdate.graphics
 scene = nil
@@ -29,13 +29,15 @@ local fontFamily = {
    }
 
 function startup()
-    scene = "start"
+    current_scene = "start"
 end
+scene = {}
 
 startup()
-sceneSelect(scene)
+--sceneSelect(current_scene)
 
 function playdate.update()
+    scene[current_scene]["tick"]()
     gfx.sprite.update()
     playdate.timer.updateTimers()
 end

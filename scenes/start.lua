@@ -11,12 +11,6 @@ blip = playdate.sound.sampleplayer.new("assets/blip2")
 local voice = playdate.sound.sampleplayer.new("assets/voicetest")
 
 
-local geo = playdate.geometry
-local Animator = playdate.graphics.animator
-
-
-
-
 function startMenuDraw()
 local menuInputHandler = {
     downButtonUp = function()
@@ -98,8 +92,6 @@ function playdate.AButtonUp()
 		--gallery
 		gfx.clear()
 		gfx.drawTextAligned("Gallery",1,1,kTextAlignment.left)
-		--yeah this still doesn't work
-		--addChar()
 	elseif selectedMenu == 4 then
 		--credits
 		gfx.clear()
@@ -109,6 +101,7 @@ function playdate.AButtonUp()
 	print("ya fukt up")
 	end
 	blip:play(1)
+	--[[ this kinda just fuckes it all up.
 	function playdate.BButtonUp()
 		gfx.clear()
 		scene = "start"
@@ -116,7 +109,7 @@ function playdate.AButtonUp()
 
 
 	end
-
+--]]
 end
 end
 
