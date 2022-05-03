@@ -69,11 +69,10 @@ end
 
 function playdate.AButtonUp()
 	if selectedMenu == 1 then
-		scene = "one"
 		gfx.clear()
 		--voice:play(5,4)
 		playdate.inputHandlers.pop(menuInputHandler)
-		sceneSelect(scene)
+		scene_transition("one")
 	elseif selectedMenu == 2 then
 		--load
 		gfx.clear()
@@ -101,15 +100,13 @@ function playdate.AButtonUp()
 	print("ya fukt up")
 	end
 	blip:play(1)
-	--[[ this kinda just fuckes it all up.
+	
 	function playdate.BButtonUp()
 		gfx.clear()
-		scene = "start"
-		sceneSelect(scene)
+		scene_transition("start")
 
 
 	end
---]]
 end
 end
 

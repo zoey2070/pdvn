@@ -8,6 +8,8 @@ import "CoreLibs/easing"
 import 'CoreLibs/nineslice'
 import 'CoreLibs/ui'
 
+scene = {}
+
 import 'scenes/start'
 import 'scenes/one'
 import 'character'
@@ -17,7 +19,7 @@ import 'dialogueTWITTER'
 import 'sceneselect2'
 import 'menu'
 gfx = playdate.graphics
-scene = nil
+
 
 nineslice = playdate.graphics.nineSlice.new("assets/nineslice", 5, 6, 5, 4)
 
@@ -30,15 +32,15 @@ local fontFamily = {
 
 function startup()
     current_scene = "start"
+    scene[current_scene]["start"]()
 end
-scene = {}
 
 startup()
 --sceneSelect(current_scene)
 
 function playdate.update()
-    scene[current_scene]["tick"]()
     gfx.sprite.update()
+    scene[current_scene]["tick"]()
     playdate.timer.updateTimers()
 end
 

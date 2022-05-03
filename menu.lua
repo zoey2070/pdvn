@@ -33,18 +33,10 @@ function Menu:init(listOptions)
             blip:play(1)
             print("selectmenu", self.selectedMenu)
             optionSelected = self.selectedMenu
-            sceneSelect(scene) --this might need to go elsewhere
-           -- playdate.inputHandlers.pop()
+
+            return optionSelected
         end
     }
-end
-
-
-
-local function getSelection(selectedMenu)
-    optionSelected = selectedMenu
-    print("optionSelected is ", optionSelected)
-    return optionSelected
 end
 
 

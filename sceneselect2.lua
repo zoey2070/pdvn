@@ -1,5 +1,16 @@
-
---https://stackoverflow.com/questions/17139371/lua-execute-a-function-stored-in-a-table
+--SCENE TEMPLATE
+scene["name"] = {
+    start = function ()
+        --on start
+end,
+     tick = function()
+    --this runs every frame
+end,
+    close = function()
+       --when you close
+end
+}
+--
 scene["start"] = {
     start = function ()
         gfx.setFont(fonty)
@@ -7,14 +18,15 @@ scene["start"] = {
         drawMenu()
 end,
      tick = function()
- --        print("tickking")
+--this runs every frame
 end,
     close = function()
         print("closing escene")
 end
 }
-scene["one"] = function ()
-    
+
+scene["one"] = {
+    start = function()
  --   music:play()
     flaggy = 1
     playdate.drawFPS()
@@ -29,27 +41,40 @@ scene["one"] = function ()
 --so now we need to return optionSelected to this shit.
 
 --THIS WORKS... maybe nest again??
-  if optionSelected == 1 then
+ 
+
+end, --end scene one init
+
+tick = function()
+print(optionSelected)
+    if optionSelected == 1 then
       
-    --might not work
-  --  scene = "two"
- --   print("progress")
- --   sceneSelect(scene)
- local listOptions = {"hell","yeah"}
- Menu3 = Menu(listOptions)
- Menu3:draw()
-  elseif optionSelected == 2 then
-    print("cry")
-  
-  else
-   -- scene = "three"
-    print("fard")
-    --sceneSelect(scene)
-  end
+        --might not work
+      --  scene = "two"
+     --   print("progress")
+     local listOptions = {"hell","yeah"}
+     Menu3 = Menu(listOptions)
+     Menu3:draw()
+      elseif optionSelected == 2 then
+      scene_transition("two")
 
-end --end scene one
+      
+      else
+       -- scene = "three"
+        print("fard")
+        --sceneSelect(scene)
+      end
 
-scene["two"] = function()
+
+end,
+close = function()
+    print("close scene 1")
+end
+}
+
+
+scene["two"] = {
+    start = function ()
     narrator = Character()
     narrator:moveTo(150,150)
     narrator:add()
@@ -58,72 +83,42 @@ scene["two"] = function()
      gfx.clear()
      narrator.face:setEmote(exprEmote["Happy"])
     end --b button funct end
-end --end scene 2
+end,
+     tick = function()
+--this runs every frame
+end,
+    close = function()
+        print("closing escene")
+end
+}--end scene 2
 
 
-scene["three"] = function()
+scene["three"] = {
+    start = function ()
     gfx.clear() --NEED TO FIX CHARACTERCOPY.LUA TO MAK IT BETTER.
     -- drawOutgoing()
      activeName = "lonngg"
     --Namebox:add() --it wants an argument here tho??
      drawText()
-  
      drawName() --so this one works
-end --end scene 3
+    end,
+         tick = function()
+    --this runs every frame
+    end,
+        close = function()
+            print("closing escene")
+    end
+
+}
 
 
 
+if scene[current_scene] == nil then print("NO SCENE") end
 
 
-
-function scene_transition(scene)
-
+function scene_transition(new_scene)
+scene[current_scene]["close"]()
+current_scene = new_scene
+print(current_scene)
+scene[current_scene]["start"]()
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
---[[
-game_level_hints = game_level_hints or {}
-game_level_hints.levels = {}
-game_level_hints.levels["level0"] = function()
-    return
-    {
-        [on_scene("scene0")] =
-        {
-            talk("hint0"),
-            talk("hint1"),
-            talk("hint2")
-        },
-        [on_scene("scene1")] =
-        {
-            talk("hint0"),
-            talk("hint1"),
-            talk("hint2")
-        }
-    }
-end
-
-function on_scene(sceneId)
-    -- some code
-    return sceneId
-end
-
-function talk(areaId)
-    -- some code
-    return areaId
-end
-
-asd = game_level_hints.levels["level0"]()
-asd["scene0"][1]
-
---]]
