@@ -10,13 +10,11 @@ import 'CoreLibs/ui'
 
 scene = {}
 
-import 'scenes/start'
 import 'scenes/one'
 import 'character'
 import 'dialoguesystem'
---import 'sceneselect'
 import 'dialogueTWITTER'
-import 'sceneselect2'
+import 'sceneselect'
 import 'menu'
 gfx = playdate.graphics
 
@@ -33,10 +31,12 @@ local fontFamily = {
 function startup()
     current_scene = "start"
     scene[current_scene]["start"]()
+    print("screm4")
 end
 
 startup()
 --sceneSelect(current_scene)
+
 
 function playdate.update()
     gfx.sprite.update()
@@ -45,10 +45,23 @@ function playdate.update()
 end
 
 
-local mainInputHandlers = {
+mainInputHandlers = {
+    upButtonUp = function()
+        print("up!")
+    end,
+    BButtonUp = function()
+        print("b")
+    end,
     AButtonUp = function()
         print("a up main input")
         -- is this where it'd go? check the scene every "a" release
 		--sceneSelect(scene)
+        activeString = "hewwo"
+ 
+        -- swap this with whatever... then call it in the text.
     end,
+    downButtonUp = function()
+        print("down!")
+    end,
+
 }
