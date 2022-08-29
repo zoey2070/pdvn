@@ -1,3 +1,5 @@
+--this one is for displaying the text
+
 if activeSpeaking == true then
     menuselecting = false
 else

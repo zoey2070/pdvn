@@ -1,5 +1,5 @@
 --IT'S PERFECT DON'T TOUCH!!!
-
+-- displays the text and name boxes
 
 class('Textboxes').extends(playdate.graphics.sprite)
 function Textboxes:init(name)
