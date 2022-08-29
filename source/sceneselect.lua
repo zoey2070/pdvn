@@ -123,13 +123,12 @@ scene["three"] = {
     start = function ()
     gfx.clear() --NEED TO FIX CHARACTERCOPY.LUA TO MAK IT BETTER.
     -- drawOutgoing()
-     local activeName = "longe" -- so this works both if no one is speaking or if someone is speaking
-     local dx = "wordy wordy words. i love words. words really get me goin. wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin "
+     local dx2 = {"hello","goodbye"}
     --Namebox:add() --it wants an argument here tho??
-    TestText = Textboxes(activeName,dx)
-    textyy = Text(activeName,dx)
-    TestText:draw()
-
+    --TestText = Textboxes(activeName,) -- i don't think this 1 is used
+    --textyy = Dialogues(activeName,dx)
+    --TestText:draw()
+    --textyy:draw()
 
 
     --[[
@@ -137,13 +136,27 @@ scene["three"] = {
      drawText()
      drawName() --so this one works
      --]]
+
+
+     
+    local activeName = "somethiaaa" -- so this works both if no one is speaking or if someone is speaking
+    local dx = "wordy wordy words. i love words. words really get me goin. wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin "
+
+    -- LOOK AT THE CHAR FACE CHANGER FOR TEXT CHANGING
+ --   textyy:draw() --this draws the boxes
+ 
+ textyy = Textboxes(activeName) 
+    actualtext = Dialogues(activeName, dx)
+     --this draws the textses
     end,
          tick = function()
-    --this runs every frame
-    TestText:draw()
-    -- LOOK AT THE CHAR FACE CHANGER FOR TEXT CHANGING
-    textyy:draw()
-  
+            --ok, combine the box drawing and the text drawing into one sprite...
+            textyy:draw()
+            actualtext:draw()
+
+           -- textyy = Textboxes(activeName)
+
+
     end,
         close = function()
             print("closing escene")

@@ -14,6 +14,7 @@ import 'scenes/one'
 import 'character'
 import 'dialoguesystem'
 import 'dialogueTWITTER'
+import 'dialogue2'
 import 'sceneselect'
 import 'menu'
 gfx = playdate.graphics
@@ -22,7 +23,7 @@ gfx = playdate.graphics
 nineslice = playdate.graphics.nineSlice.new("assets/nineslice", 5, 6, 5, 4)
 
 
-local fonty = gfx.font.new('assets/monogram-21')
+fonty = gfx.font.new('assets/monogram-21')
 gfx.setFont(fonty)
 local fontFamily = {
     [playdate.graphics.font.kVariantNormal] = fonty
