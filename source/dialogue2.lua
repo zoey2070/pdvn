@@ -14,24 +14,43 @@ function Dialogues:init(name, strings)
     self.maxWidth = 385
     self.y = 150 -- i think this puts it inside the box, so this should change if we do something like a NVL
     self.height = 90
-    self.dximg = gfx.image.new(self.maxWidth, 800)
-
+    self.dximg = gfx.image.new(self.maxWidth, 800) --???
+    self.charimg = gfx.image.new(self.maxWidth, 800)
 end
 
-function Dialogues:draw()
+class('DxName').extends('Dialogues')
+class('DxDx').extends('Dialogues')
+
+local y = 150
+local height = 90
+local maxWidth = 385
+
+function DxDx(strings)
     --make the dialogues a sprite.
     
   gfx.pushContext(dximg)
-      gfx.drawTextInRect(self.Dx, 13, self.y+10, self.maxWidth, self.height-6, nil, "...", kTextAlignment.center)
+      gfx.drawTextInRect(strings, 13, y+10, maxWidth, height-6, nil, "...", kTextAlignment.center)
   gfx.popContext()
-  self.spritedx = gfx.sprite.new(dximg)
+  local spritedx = gfx.sprite.new(dximg)
+end
 
+function DxName(name) ---??
+ --DxName.super.init(self)
 
-  if self.charname ~= nil then -- and this is for the name.
+-- make each one a function, then call function in dx init
+  if name ~= nil then -- and this is for the name.
     gfx.pushContext(nameimg)
-       gfx.drawTextInRect(self.charname,10,self.y-15,self.maxWidth-5,25,nil,"...",kTextAlignment.left)
+       gfx.drawTextInRect(name,10,y-15,maxWidth-5,25,nil,"...",kTextAlignment.left)
     gfx.popContext()
-    self.spritename = gfx.sprite.new(nameimg)
+    local spritename = gfx.sprite.new(nameimg)
     print("draw name")
       end
+end
+
+function Dialogues:print()
+    gfx.pushContext(txtimg)
+        DxName(self.charname)
+        DxDx(self.Dx)
+    gfx.popContext()
+    self.txtspr = gfx.sprite.new(txtimg)
 end

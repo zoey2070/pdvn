@@ -15,6 +15,7 @@ import 'character'
 import 'dialoguesystem'
 import 'dialogueTWITTER'
 import 'dialogue2'
+--import 'dx'
 import 'sceneselect'
 import 'menu'
 gfx = playdate.graphics
@@ -57,7 +58,7 @@ mainInputHandlers = {
         print("a up main input")
         -- is this where it'd go? check the scene every "a" release
 		--sceneSelect(scene)
-        activeString = "hewwo"
+        activestring = "hewwo"
  
         -- swap this with whatever... then call it in the text.
     end,

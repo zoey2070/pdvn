@@ -144,18 +144,49 @@ scene["three"] = {
 
     -- LOOK AT THE CHAR FACE CHANGER FOR TEXT CHANGING
  --   textyy:draw() --this draws the boxes
- 
- textyy = Textboxes(activeName) 
-    actualtext = Dialogues(activeName, dx)
-     --this draws the textses
+   -- for boxes
+   
+ textyy = Textboxes(activeName)
+   actualtext = Dialogues(activeName, dx)
+   actualtext:print()
+
+   
+   --[[local dialogue {"yp","ipp"}
+    local prompts {"in","visible"}
+    local answers {"test", "test2"}
+    --]]
+    -- thisScene = Dialogue(dialogue, prompts, answers)
+     
     end,
          tick = function()
             --ok, combine the box drawing and the text drawing into one sprite...
-            textyy:draw()
-            actualtext:draw()
+           
+           -- thisScene:update()
+           -- ^ for dialogue/prompts/answers one
 
+
+        if playdate.buttonIsPressed(playdate.kButtonA) then
+           
+           print("a press")
+        local activeName = "txtxtxttxt txtxtxtxt"
+        local dx ="new math"
+        actualtext = Dialogues(activeName,dx)
+        end
+            --textyy:draw() -- this one works
+         -- makes namebox disappear??
+--          textyy = Textboxes(activeName)
+          actualtext:print()
+
+         -- textyy = Textboxes(activeName) -- ** once this is all one fctn it should work
+         -- doesn't bc activename is local;..
+         -- actualtext:print() --should print all text as sprite
            -- textyy = Textboxes(activeName)
 
+           --TODO:
+           --make it so u don't have to do actualtext:draw/print like how textyy works
+           --combine the two into one fctn
+           --GOAL: hotswap names/dx, have multiple strings for dx,
+           -- and then they do a continue on A press...
 
     end,
         close = function()
