@@ -46,6 +46,15 @@ function playdate.update()
     playdate.timer.updateTimers()
 end
 
+function combine(activeName,dx,kind)
+    gfx.sprite.removeAll()
+    local boxes = Textboxes(activeName,kind)
+    local text = Dialogues(activeName,dx,kind)
+    boxes:draw()
+    boxes:setZIndex(61)
+    text:print()
+    text:setZIndex(60)
+    end
 
 mainInputHandlers = {
     upButtonUp = function()

@@ -6,7 +6,7 @@ function drawOutgoing()
 gfx.pushContext(outgoing)
 outgoing:drawInRect(100,1,200,5)
 gfx.popContext()
-localspriteoutgoing = gfx.sprite.new(outgoing)
+local spriteoutgoing = gfx.sprite.new(outgoing)
 spriteoutgoing:moveTo(0,0)
 spriteoutgoing:add()
 end

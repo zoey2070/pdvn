@@ -139,43 +139,76 @@ scene["three"] = {
 
 
      
-    local activeName = "somethiaaa" -- so this works both if no one is speaking or if someone is speaking
+     -- so this works both if no one is speaking or if someone is speaking
     local dx = "wordy wordy words. i love words. words really get me goin. wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin "
 
     -- LOOK AT THE CHAR FACE CHANGER FOR TEXT CHANGING
  --   textyy:draw() --this draws the boxes
    -- for boxes
    
- textyy = Textboxes(activeName)
-   actualtext = Dialogues(activeName, dx)
-   actualtext:print()
-
+ 
+   --actualtext = Dialogues(activeName, dx)
+   --actualtext:print()
+  
    
    --[[local dialogue {"yp","ipp"}
     local prompts {"in","visible"}
     local answers {"test", "test2"}
     --]]
     -- thisScene = Dialogue(dialogue, prompts, answers)
-     
+    local activeName = "somethiaaa"
+
+    local activeName = "yeah"
+    --local dx = {"yeeeeeeeaaaaaaaaa", "jeeeeeeeeee"}
+    local dx = "beep"
+    --textyy = Textboxes(activeName,kind) -- the boxes
+    -- actualtext:print()
+  --  textyy:draw()
+  --  actualtext = Dialogues(activeName,dx,kind) -- the textes
+-- actualtext:print()
+    --kind = "nvl"
+    
+    combine(activeName,dx,kind)
+
+
     end,
          tick = function()
             --ok, combine the box drawing and the text drawing into one sprite...
            
            -- thisScene:update()
            -- ^ for dialogue/prompts/answers one
+          -- gfx.sprite:update()
 
+
+          
+        local newname = "tetet"
+        local dx = "ettkoetok"
+        local kind = ""
+        combine(newname,dx,kind)
 
         if playdate.buttonIsPressed(playdate.kButtonA) then
-           
+           Dialogues:update()
            print("a press")
-        local activeName = "txtxtxttxt txtxtxtxt"
+        
+
+        gfx.sprite.removeAll()
+        
+        local activeName = "txtxtxttxt txtxtxtxt" --so this shows up despite the kind being nvl
         local dx ="new math"
-        actualtext = Dialogues(activeName,dx)
+        local kind = "nvl"
+
+        --[[
+        textyy = Textboxes(activeName,kind)
+        textyy:draw()
+        actualtext = Dialogues(activeName,dx,kind)
+        actualtext:print()
+--]]
+        combine(activeName,dx,kind) --this WORKS
         end
-            --textyy:draw() -- this one works
+
+
+            -- this one works
          -- makes namebox disappear??
---          textyy = Textboxes(activeName)
-          actualtext:print()
 
          -- textyy = Textboxes(activeName) -- ** once this is all one fctn it should work
          -- doesn't bc activename is local;..
@@ -184,7 +217,7 @@ scene["three"] = {
 
            --TODO:
            --make it so u don't have to do actualtext:draw/print like how textyy works
-           --combine the two into one fctn
+           --check! combine the two into one fctn
            --GOAL: hotswap names/dx, have multiple strings for dx,
            -- and then they do a continue on A press...
 
@@ -226,7 +259,7 @@ function stopMenuInput()
     --playdate.inputHandlers.push(mainInputHandlers) --if we do this then any scene-specific ones get overridden.
 end
 
-function sceneTransitions()
+function sceneTransitions() --dose this do anything??
 
 local transitionTime = 100
 transitionAnimator = gfx.animator.new(transitionTime, 0, 400, playdate.easingFunctions.inQuad)
