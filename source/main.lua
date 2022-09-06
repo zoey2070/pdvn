@@ -14,8 +14,6 @@ import 'scenes/one'
 import 'character'
 import 'dialoguesystem'
 import 'dialogueTWITTER'
-import 'dialogue2'
---import 'dx'
 import 'sceneselect'
 import 'menu'
 gfx = playdate.graphics
@@ -46,14 +44,14 @@ function playdate.update()
     playdate.timer.updateTimers()
 end
 
-function combine(activeName,dx,kind)
+function combine(dx) --shouldn't even need this
     gfx.sprite.removeAll()
-    local boxes = Textboxes(activeName,kind)
-    local text = Dialogues(activeName,dx,kind)
+    local boxes = Textboxes(dx)
+    local text = Dialogues(dx)
     boxes:draw()
-    boxes:setZIndex(61)
+  --  boxes:setZIndex(61)
     text:print()
-    text:setZIndex(60)
+  --  text:setZIndex(60)
     end
 
 mainInputHandlers = {

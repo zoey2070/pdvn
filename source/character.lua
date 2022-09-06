@@ -28,6 +28,9 @@ exprEmote = {Neutral = 1, Happy = 2, Sad = 3, Cummy = 4}
 local bodyImg = playdate.graphics.image.new("assets/defaultbody")
 --local exprImg = playdate.graphics.image.new("assets/defaultface")
 
+
+--shouldn't these extend Character?
+--no, because they're initialized IN Character
 class('CharacterBody').extends(playdate.graphics.sprite)
 function CharacterBody:init()
     CharacterBody.super.init(self)

@@ -168,7 +168,7 @@ scene["three"] = {
 -- actualtext:print()
     --kind = "nvl"
     
-    combine(activeName,dx,kind)
+    -- combine(dx) --so now the namebox is broke
 
 
     end,
@@ -182,28 +182,34 @@ scene["three"] = {
 
           
         local newname = "tetet"
-        local dx = "ettkoetok"
+        local dx = "@ettkoetok"
         local kind = ""
-        combine(newname,dx,kind)
+       Dx5:Pr1(dx)
 
         if playdate.buttonIsPressed(playdate.kButtonA) then
-           Dialogues:update()
+         --  Dialogues:update()
            print("a press")
         
 
         gfx.sprite.removeAll()
         
         local activeName = "txtxtxttxt txtxtxtxt" --so this shows up despite the kind being nvl
-        local dx ="new math"
-        local kind = "nvl"
+        local dx ="111new math"
+        --local kind = "nvl"
 
         --[[
         textyy = Textboxes(activeName,kind)
         textyy:draw()
         actualtext = Dialogues(activeName,dx,kind)
         actualtext:print()
---]]
-        combine(activeName,dx,kind) --this WORKS
+--]]        
+
+            Dx5:Pr1(dx) -- this is sending it to the first prefixinator
+
+
+        --  combine(dx) -- so this works.
+          print("ran dx5 with", dx)
+      --  combine(dx) --this WORKS
         end
 
 
