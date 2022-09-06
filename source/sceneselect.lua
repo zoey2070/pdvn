@@ -99,7 +99,7 @@ end
 }
 
 
-scene["two"] = {
+scene["two"] = { --rewrite to go with the dialogue system.
     start = function ()
     narrator = Character()
     narrator:moveTo(150,150)
@@ -122,64 +122,29 @@ end
 scene["three"] = {
     start = function ()
     gfx.clear() --NEED TO FIX CHARACTERCOPY.LUA TO MAK IT BETTER.
-    -- drawOutgoing()
-     local dx2 = {"hello","goodbye"}
-    --Namebox:add() --it wants an argument here tho??
-    --TestText = Textboxes(activeName,) -- i don't think this 1 is used
-    --textyy = Dialogues(activeName,dx)
-    --TestText:draw()
-    --textyy:draw()
 
 
-    --[[
-    drawTextbox() --Works.
-     drawText()
-     drawName() --so this one works
-     --]]
 
-
-     
-     -- so this works both if no one is speaking or if someone is speaking
-    local dx = "wordy wordy words. i love words. words really get me goin. wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin "
-
-    -- LOOK AT THE CHAR FACE CHANGER FOR TEXT CHANGING
- --   textyy:draw() --this draws the boxes
-   -- for boxes
-   
- 
-   --actualtext = Dialogues(activeName, dx)
-   --actualtext:print()
-  
-   
-   --[[local dialogue {"yp","ipp"}
-    local prompts {"in","visible"}
-    local answers {"test", "test2"}
-    --]]
-    -- thisScene = Dialogue(dialogue, prompts, answers)
-    local activeName = "somethiaaa"
-
-    local activeName = "yeah"
-    --local dx = {"yeeeeeeeaaaaaaaaa", "jeeeeeeeeee"}
-    local dx = "@beep"
+    local dx = "@wordy wordy words. i love words. words really get me goin. wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin "
     Dx5:Pr1(dx)
-    -- combine(dx) --so now the namebox is broke
 
 
     end,
          tick = function()
-         
-        if playdate.buttonIsPressed(playdate.kButtonA) then
-         --  Dialogues:update()
+            playdate.drawFPS(10,10)
+
+        if playdate.buttonJustPressed(playdate.kButtonA) then
+
            print("a press")
-           gfx.clear() -- this works but tidy does not...
+         --  gfx.clear() -- this works but tidy does not...
         Dx5:tidy() --so this should remove em all...
+
         local dx ="111new math"
             Dx5:Pr1(dx) -- this is sending it to the first prefixinator
 
 
-        --  combine(dx) -- so this works.
           print("ran dx5 with", dx)
-      --  combine(dx) --this WORKS
+          
         end
 
     end,

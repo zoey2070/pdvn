@@ -39,9 +39,10 @@ startup()
 
 
 function playdate.update()
-    gfx.sprite.update()
-    scene[current_scene]["tick"]()
     playdate.timer.updateTimers()
+    gfx.sprite.update()
+    playdate.display.setRefreshRate(10)
+    scene[current_scene]["tick"]()
 end
 
 function combine(dx) --shouldn't even need this
