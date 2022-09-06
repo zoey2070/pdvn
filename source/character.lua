@@ -25,7 +25,7 @@ end
 
 exprEmote = {Neutral = 1, Happy = 2, Sad = 3, Cummy = 4}
 
-local bodyImg = playdate.graphics.image.new("assets/defaultbody")
+bodyImgTbl = playdate.graphics.imagetable.new("assets/defaultbody-table-154-182")
 --local exprImg = playdate.graphics.image.new("assets/defaultface")
 
 
@@ -34,8 +34,15 @@ local bodyImg = playdate.graphics.image.new("assets/defaultbody")
 class('CharacterBody').extends(playdate.graphics.sprite)
 function CharacterBody:init()
     CharacterBody.super.init(self)
-    self:setImage(bodyImg)
+    self:setBody(bodyImgTbl[1])
 end
+
+--TODO: put this all together in DX
+function CharacterBody:setBody(bodyNum)
+  self:setImage(bodyImgTbl[bodyNum])
+end
+
+
 
 class('CharacterFace').extends(playdate.graphics.sprite)
 function CharacterFace:init()

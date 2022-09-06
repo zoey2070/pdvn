@@ -160,50 +160,20 @@ scene["three"] = {
 
     local activeName = "yeah"
     --local dx = {"yeeeeeeeaaaaaaaaa", "jeeeeeeeeee"}
-    local dx = "beep"
-    --textyy = Textboxes(activeName,kind) -- the boxes
-    -- actualtext:print()
-  --  textyy:draw()
-  --  actualtext = Dialogues(activeName,dx,kind) -- the textes
--- actualtext:print()
-    --kind = "nvl"
-    
+    local dx = "@beep"
+    Dx5:Pr1(dx)
     -- combine(dx) --so now the namebox is broke
 
 
     end,
          tick = function()
-            --ok, combine the box drawing and the text drawing into one sprite...
-           
-           -- thisScene:update()
-           -- ^ for dialogue/prompts/answers one
-          -- gfx.sprite:update()
-
-
-          
-        local newname = "tetet"
-        local dx = "@ettkoetok"
-        local kind = ""
-       Dx5:Pr1(dx)
-
+         
         if playdate.buttonIsPressed(playdate.kButtonA) then
          --  Dialogues:update()
            print("a press")
-        
-
-        gfx.sprite.removeAll()
-        
-        local activeName = "txtxtxttxt txtxtxtxt" --so this shows up despite the kind being nvl
+           gfx.clear() -- this works but tidy does not...
+        Dx5:tidy() --so this should remove em all...
         local dx ="111new math"
-        --local kind = "nvl"
-
-        --[[
-        textyy = Textboxes(activeName,kind)
-        textyy:draw()
-        actualtext = Dialogues(activeName,dx,kind)
-        actualtext:print()
---]]        
-
             Dx5:Pr1(dx) -- this is sending it to the first prefixinator
 
 
@@ -211,21 +181,6 @@ scene["three"] = {
           print("ran dx5 with", dx)
       --  combine(dx) --this WORKS
         end
-
-
-            -- this one works
-         -- makes namebox disappear??
-
-         -- textyy = Textboxes(activeName) -- ** once this is all one fctn it should work
-         -- doesn't bc activename is local;..
-         -- actualtext:print() --should print all text as sprite
-           -- textyy = Textboxes(activeName)
-
-           --TODO:
-           --make it so u don't have to do actualtext:draw/print like how textyy works
-           --check! combine the two into one fctn
-           --GOAL: hotswap names/dx, have multiple strings for dx,
-           -- and then they do a continue on A press...
 
     end,
         close = function()

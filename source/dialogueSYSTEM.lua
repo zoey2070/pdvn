@@ -23,11 +23,11 @@ function Dx5:Pr1(strings)
         print("kind to nvl")
     self.kind = "nvl"
     self:printNovel(strings)
+
     else
         print("kind is default")
-        
         self:Namebox(char)
-
+        
         self.printMeter += 1
     local char = string.sub(strings,self.printMeter,self.printMeter)
         self:Pr2(char, strings)
@@ -72,17 +72,18 @@ function Dx5:Textprint(strings)
     gfx.popContext()
     local spritetextbox = gfx.sprite.new(textbox)
     spritetextbox:moveTo(150,150) --0,150
-    spritetextbox:setZIndex(59)
     spritetextbox:add()
+    spritetextbox:setZIndex(59)
+
     -- the text
 
 gfx.pushContext(dximg)
     gfx.drawTextInRect(strings, 13, self.y+10, 340, 400, nil, "...", kTextAlignment.center)
 gfx.popContext()
 
-local spritedx = gfx.sprite.new(dximg)
-spritedx:add()
-spritedx:setZIndex(59)
+self.spritedx = gfx.sprite.new(dximg)
+self.spritedx:add()
+self.spritedx:setZIndex(59)
 
 end
 
@@ -117,10 +118,10 @@ else
    namebox:drawInRect(0,self.height+nbHeight,nbWidth,nbHeight)
    gfx.drawTextInRect(name,10,self.y-15,self.maxWidth-5,25,nil,"...",kTextAlignment.left)
  gfx.popContext()
- local spritenamebox = gfx.sprite.new(namebox)
- spritenamebox:moveTo(50,50) --50,50
- spritenamebox:setZIndex(60)
- spritenamebox:add()
+ self.spritenamebox = gfx.sprite.new(namebox)
+ self.spritenamebox:moveTo(50,50) --50,50
+ self.spritenamebox:setZIndex(65)
+ self.spritenamebox:add()
 
 end
 end
@@ -133,9 +134,9 @@ function Dx5:printNovel(strings)
     gfx.pushContext(nvl)
       nvl:drawInRect(self.x,self.nvly,390,self.nvlheight)
     gfx.popContext()
-    local spritenvlbox= gfx.sprite.new(nvl)
-    spritenvlbox:moveTo(0,150)
-    spritenvlbox:add()
+    self.spritenvlbox= gfx.sprite.new(nvl)
+    self.spritenvlbox:moveTo(0,150)
+    self.spritenvlbox:add()
 
     -- nvl dx
 
@@ -147,8 +148,18 @@ function Dx5:printNovel(strings)
 gfx.pushContext(dximg)
     gfx.drawTextInRect(nvlString, self.x, self.nvly, self.maxWidth, self.height, nil, "...", kTextAlignment.center)
 gfx.popContext()
-local spritedx = gfx.sprite.new(dximg)
-spritedx:add()
+self.spritedx = gfx.sprite.new(dximg)
+self.spritedx:add()
+self.spritedx:setZIndex(60)
 
 end
 
+function Dx5:tidy()
+    print("tidy...")
+self.spritedx:remove()
+self.spritenvlbox:remove()
+playdate.graphics.sprite:removeAll()
+if self.kind ~= "nvl" then
+self.spritenamebox:remove()
+end
+end
