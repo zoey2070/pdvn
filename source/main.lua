@@ -32,6 +32,7 @@ function startup()
     current_scene = "start"
     scene[current_scene]["start"]()
     print("screm4")
+    print("0.1")
 end
 
 startup()
@@ -41,19 +42,10 @@ startup()
 function playdate.update()
     playdate.timer.updateTimers()
     gfx.sprite.update()
-    playdate.display.setRefreshRate(10)
     scene[current_scene]["tick"]()
+    playdate.display.setRefreshRate(10)
 end
 
-function combine(dx) --shouldn't even need this
-    gfx.sprite.removeAll()
-    local boxes = Textboxes(dx)
-    local text = Dialogues(dx)
-    boxes:draw()
-  --  boxes:setZIndex(61)
-    text:print()
-  --  text:setZIndex(60)
-    end
 
 mainInputHandlers = {
     upButtonUp = function()
@@ -65,9 +57,7 @@ mainInputHandlers = {
     AButtonUp = function()
         print("a up main input")
         -- is this where it'd go? check the scene every "a" release
-		--sceneSelect(scene)
-        activestring = "hewwo"
- 
+		--sceneSelect(scene) 
         -- swap this with whatever... then call it in the text.
     end,
     downButtonUp = function()

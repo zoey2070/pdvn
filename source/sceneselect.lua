@@ -73,6 +73,10 @@ scene["one"] = {
    local listOptions = {"Char Test","Text Test","3"}
     Menu2 = Menu(listOptions)
     Menu2:draw() -- so this just does the default menu...
+
+    -- hey can't we simplify this shit?
+
+
 --so now we need to return optionSelected to this shit.
 
 --THIS WORKS... maybe nest again??
@@ -94,6 +98,10 @@ tick = function()
       end
 end,
 close = function()
+    
+    playdate.inputHandlers.pop()
+    print("popped input")
+
     print("close scene 1")
 end
 }
@@ -103,14 +111,16 @@ scene["two"] = { --rewrite to go with the dialogue system.
     start = function ()
     narrator = Character()
     narrator:moveTo(150,150)
+    narrator.body:setBody(2)
     narrator:add()
+
     --narrator:setZIndex(layers.character)
 
 end,
      tick = function()    
         function playdate.BButtonUp()
         gfx.clear()
-        narrator.face:setEmote(exprEmote["Happy"])
+        narrator.face:setEmote(1)
        end --b button funct end
 end,
     close = function()
@@ -122,30 +132,56 @@ end
 scene["three"] = {
     start = function ()
     gfx.clear() --NEED TO FIX CHARACTERCOPY.LUA TO MAK IT BETTER.
+    --[[ i have no idea how to use this
+        gfx.pushContext(patternimg)
+    gfx.setPattern({0x5A, 0xA5, 0x5A, 0xA5, 0xA5, 0x5A, 0xA5, 0x5A})
+        gfx.popContext()
+    patternspr = gfx.sprite.new(patternimg)
+    patternspr:add()
+--]]
+   -- local dx = "@wordy wordy words. i love words. words really get me goin. wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin "
+   -- Dx5(dx)
 
 
-
-    local dx = "@wordy wordy words. i love words. words really get me goin. wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin wordy wordy words. i love words. words really get me goin "
-    Dx5:Pr1(dx)
-
+    local dxpos = 300
+    local dx ={"111new math","@neeeww maaaaaath"}
+        Dx5(dx,dxpos)
 
     end,
          tick = function()
             playdate.drawFPS(10,10)
 
-        if playdate.buttonJustPressed(playdate.kButtonA) then
+            if playdate.buttonJustPressed(playdate.kButtonA) then
+            Dx5:update()
+            end
+--[[
+
+        if playdate.buttonIsPressed(playdate.kButtonA) then
 
            print("a press")
+           
          --  gfx.clear() -- this works but tidy does not...
-        Dx5:tidy() --so this should remove em all...
+       -- Dx5:tidy() --so this should remove em all...
+            Tidy2()
+        -- this is sending it to the first prefixinator
+          --  Dx5:tidy()
+          --Tidy2()
 
-        local dx ="111new math"
-            Dx5:Pr1(dx) -- this is sending it to the first prefixinator
-
+            --TODO: multiple lines of dx in one thing :3
+            -- continue on a-press, but AUTO!
 
           print("ran dx5 with", dx)
           
         end
+        --]]
+        if playdate.buttonIsPressed(playdate.kButtonB) then
+            Tidy2()
+       -- local dxpos = 100
+        local dx = {"322electricboogaloo","@aaaaaaaaaaaa","111help"}
+        Dx5(dx)
+        end
+
+
 
     end,
         close = function()
