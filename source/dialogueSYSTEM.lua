@@ -49,8 +49,8 @@ function Dx5:Pr1()
         self:Namebox(char)
         self.printMeter += 1
         print(self.printMeter, "Pr1")
-        local char = string.sub(self.dx,self.printMeter,self.printMeter)
-        self:Pr2(char, nbChar)
+        local nchar = string.sub(self.dx,self.printMeter,self.printMeter)
+        self:Pr2(nchar, nbChar)
      -- go to another function to get the numbers for the
      -- image tables....
     end
@@ -58,11 +58,11 @@ function Dx5:Pr1()
 end
 
 function Dx5:Pr2(char, nbChar)
-    print("nbchar", nbChar)
+    print("nbchar", nbChar) --this returns 3.
 --if nbChar == "1" then --so this would just be equal to the name....
     --if we just concactenate do we even need this if statement?
-    
-        local bodyName = tostring(nbChar) --THIS NEEDS TO BE A STRING, NOT A #
+      local bodyName = tostring(nbChar) --THIS NEEDS TO BE A STRING, NOT A #
+      print(bodyName, "bodyname before stringed")
 
         --if this works it's ogre.
 
@@ -71,42 +71,41 @@ function Dx5:Pr2(char, nbChar)
         print(char, "char body")
         print(bodyName, "bodyname")
 
+    self.printMeter += 1
+    local char3 = string.sub(self.dx, self.printMeter, self.printMeter)
 
-
-        narrator = Character() -- NEEDS FIXED
-        narrator.body:setBody(bodyName, char) -- ??
-        --FIX THE PASSING OF THE VARS.
-
-
-    print("body 1") 
---else
-    --print("need to finish")
---end
-self.printMeter += 1
-local char = string.sub(self.dx, self.printMeter, self.printMeter)
-self:Pr3(char, nbChar)
+        if self.pos ~= nil then
+self.pos = 120
 end
+local narrator = Character(self.pos,-60,nbChar, char3, char)
+narrator:setZIndex(65)
+narrator:add()
+self.printMeter += 1
+local finalStr = string.sub(self.dx, self.printMeter, #self.dx)
+self:Textprint(finalStr)
 
+end
+--[[
 function Dx5:Pr3(char, nbChar)
     print("nbchar PR3", nbChar)
     local exprName = nbChar
     print(exprName, "exprName")
 
 --WHYYYYYYYYY DOES THIS WORK
-    narrator.face:setEmote(exprName, char) -- ??
-    if self.pos ~= nil then
-    narrator:moveTo(self.pos,120)
-else
-    narrator:moveTo(120,120) --defaults if no pos.
-end
-    narrator:add()
+    narratorF = CharacterFace(exprName, char) -- ??
+    --if self.pos ~= nil then
+    --Character:moveTo(self.pos,120)
+--else
+    Character:moveTo(120,120) --defaults if no pos.
+--end
+   Character:add() --narrator()
 
 
     self.printMeter += 1
     local finalStr = string.sub(self.dx, self.printMeter, #self.dx)
     self:Textprint(finalStr)
 end
-
+--]]
 
 function Dx5:Textprint(finalStr)
     -- the box
@@ -191,7 +190,7 @@ function Dx5:printNovel()
 self.spritenvl = gfx.sprite.new(self.nvlimg)
 self.spritenvl:moveTo(200,120)
 self.spritenvl:add()
-self.printMeter = 4
+self.printMeter += 1
 
 end
 
@@ -215,6 +214,8 @@ print("n sprites:" .. gfx.sprite.spriteCount())
 end
 
 function Tidy2()
+    playdate.graphics.sprite:getAllSprites()
+
 playdate.graphics.sprite:removeAll()
 end
 
@@ -248,8 +249,8 @@ function Dx5:continue(strings)-- gets current dialogue
 --
     if self.printMeter >= 4 then --it should just stop AT 4...
         self.aAllowed = true
-
-        self.printMeter = 1
+print(self.printMeter)
+--        self.printMeter = 1
     end
         -- prints current dialogue
         --self.printMeter = 1 -- so this should just reset it and do initial print forever??
