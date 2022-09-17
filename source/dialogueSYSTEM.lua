@@ -1,12 +1,14 @@
 import 'sceneselect'
 class('Dx5').extends()
 function Dx5:init(strings,dxpos)
-    Dx5.super.init(self, strings)
+    Dx5.super.init(self)
     self.linePos = 1
     self.y = 150
     self.pos = dxpos
     self.printMeter = 1
     self.kind = ""
+
+    self.strings = strings
 
 
     self.aAllowed = false
@@ -15,7 +17,7 @@ function Dx5:init(strings,dxpos)
 
 
 
-    
+    print(self.strings, "print self.string")
     print("print str", strings[1], "lines:", #strings)
 
     self.nvlimg = playdate.graphics.image.new(400, 240)
@@ -25,7 +27,7 @@ function Dx5:init(strings,dxpos)
         print("bruh something's broke")
         self.dx = "force"
     else
-        print("wya")
+        
     self:continue(strings)
 
     end
@@ -34,9 +36,13 @@ function Dx5:init(strings,dxpos)
 end
 
 function Dx5:Pr1()
-    --self.printMeter = 1
+    self.printing = true
+    self.aAllowed = false
+    self.printMeter = 1
+    print(self.printMeter, "print meter in pr1")
+
    -- print("pr1", strings[self.linePos])
-   print(self.dx)
+   print("dialogue:", self.dx)
     local char = string.sub(self.dx,1,1)
     if char == "@" then
         print("kind to nvl")
@@ -77,9 +83,9 @@ function Dx5:Pr2(char, nbChar)
         if self.pos ~= nil then
 self.pos = 120
 end
-local narrator = Character(self.pos,-60,nbChar, char3, char)
+local narrator = Character(self.pos,-60,nbChar, char3, char) --check this.
 narrator:setZIndex(65)
-narrator:add()
+--narrator:add()
 self.printMeter += 1
 local finalStr = string.sub(self.dx, self.printMeter, #self.dx)
 self:Textprint(finalStr)
@@ -125,6 +131,9 @@ function Dx5:Textprint(finalStr)
     self.kind = ""
 
     print("printmeter", self.printMeter)
+
+    self.aAllowed = true
+    print(self.aAllowed,"status of a Allowed at the end of finalstr")
     --this should be where it ends for each dx.
 end
 
@@ -192,6 +201,9 @@ self.spritenvl:moveTo(200,120)
 self.spritenvl:add()
 self.printMeter += 1
 
+self.aAllowed = true
+print(self.aAllowed, "a.allowed in Nvl")
+
 end
 
 function Dx5:tidy()
@@ -223,35 +235,93 @@ end
 
 function Dx5:continue(strings)-- gets current dialogue
 
+    print(self.strings, "da strings")
+
     self.dx = strings[self.linePos]
 
+
+    print(self.aAllowed, "a.allowed in continue") ---- !!!!!!!!
+    print(self.printMeter, "print meter in main ctn") 
+
+
+    if self.printMeter == 4 then --then it is done printing.
+        self.aAllowed = true
+        self.linePos += 1
+        self.dx = self.strings[self.linePos]
+        print(self.linePos)
+        self.printMeter = 1 --resets....
+        self.printing = false --??? 
+
+        if self.aAllowed == true and playdate.buttonIsPressed(playdate.kButtonA) then
+        self:Pr1() --shouldn't need da strings if we got self.dx
+        end
+    end
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if self.linePos < #self.strings then
+        self.printing = true
+        self.aAllowed = false
+        print(self.aAllowed, "a.allowed status if linepos is smaller than strings")
+
+    elseif self.linePos == #self.strings then --check logic here -- this isn't running because the one has THREE FUCKING STRINGs.
+        self.aAllowed = true
+        self.linePos = 1
+        --reset...
+        print(self.aAllowed, "a.allowed status when linepos = strings")
+     print("we outta lines...")
+    else
+        print("bro i'm so lost")
+        end
+
+
+  
+
+
+
     if  self.initprint ~= true then
-        self:Pr1()
         self.initprint = true
+        self.dx = self.strings[1]
+        self:Pr1()
+
     end
 
+
+    if self.printMeter == 4 then --it should just stop AT 4...
+        self.aAllowed = true
+    else
+        print(self.printMeter)
+--        self.printMeter = 1
+    end
     if self.aAllowed == true then --need more logik
-      print("press A pls")
+        print("press A pls")
+  
+          
+      end
 
-        
-    end
 
 
     if self.printing == true and self.initprint == true then
-
+        print("printing true, initprint true")
         self.linePos += 1
-        self.dx = strings[self.linePos]
+        self.dx = self.strings[self.linePos]
         print(self.linePos)
+        self.printing = false --actively printing?? --------------------
         self:Pr1() --shouldn't need da strings if we got self.dx
-        self.printing = false
-        
+        print(self.aAllowed, "a.allowed status self.print init.print")
     end
 --
-    if self.printMeter >= 4 then --it should just stop AT 4...
-        self.aAllowed = true
-print(self.printMeter)
---        self.printMeter = 1
-    end
+
         -- prints current dialogue
         --self.printMeter = 1 -- so this should just reset it and do initial print forever??
       --bro this'll just keep GOING
@@ -265,31 +335,33 @@ print(self.printMeter)
 
 
 
-    if self.linePos <= #strings then
-        self.printing = true
-    elseif self.linePos > #strings then --check logic here
-        self.aAllowed = false
-        self.linePos = 1
-        --reset...
-    print("we outta lines...")
-    else
-        print("bro i'm so lost")
-        end
 
 
 end
+
+--ok so it needs some strings for when update runs, otherwise it ain't Gonna do continue..
 
 function Dx5:update()
-  --  self.dx = strings[self.linePos] 
-if self.initprint == true then --bro this just loops. we found it
-    self:continue()
-end
-Tidy2()
-print("running update", self.aAllowed) --why is this returning nil?
+    print("running update", self.aAllowed) --why is this returning nil?
 
-        if self.aAllowed == true and playdate.buttonIsPressed(playdate.kButtonA) then
-                print("pressed A")
-                self.printing = true
-                self.aAllowed = false
-        end
+    self.aAllowed = true --FUCK you
+
+    if self.aAllowed == true and playdate.buttonIsPressed(playdate.kButtonA) then
+            print("pressed A")
+            self.printing = true
+            self.aAllowed = false
+            
+            print(self.aAllowed, "IF IT'S TRUE AND WE PRESSED A")
+
+
+            self:continue() --needs some Strings.
+
+    end
+
+
+  --  self.dx = strings[self.linePos] 
+--[[if self.initprint == true then --bro this just loops. we found it
+  
+end--]]
+
 end

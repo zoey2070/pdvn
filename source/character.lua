@@ -16,7 +16,7 @@ function Character:init(x,y,nbChar,exprEmote,bodyNum)
 
 
     self.charf = playdate.graphics.image.new(154, 182)
-    self.charf:drawCentered(200, 120) --this line fukt UP
+    --self.charf:drawCentered(200, 120) --this line fukt UP
 
     self:getBody()
     self:getFace()
@@ -39,14 +39,14 @@ function Character:getFace()
 
 --  self.exprImgTbl = exprImgTbl
 local faceno = tostring(self.nbChar)
-
-local exprImgTbl = playdate.graphics.imagetable.new("assets/defaultface-table-154-182")
---  local exprImgTbl = playdate.graphics.imagetable.new("assets/" .. faceno .. "face-table-154-182")
+print(faceno, "face num")
+--local exprImgTbl = playdate.graphics.imagetable.new("assets/defaultface-table-154-182")
+self.exprImgTbl = playdate.graphics.imagetable.new("assets/" .. faceno .. "face-table-154-182")
 
 local Nexpr = tonumber(self.exprEmote)
 
-
-self.face = gfx.sprite.new(exprImgTbl[Nexpr])
+print(Nexpr)
+self.face = gfx.sprite.new(self.exprImgTbl[Nexpr])
 end
 
 
@@ -60,12 +60,13 @@ function Character:getBody()
         print(temp,"temp value")
         local NbodyNum = tonumber(self.bodyNum) --this needs to be an integer
     
-        local bodyImgTbl = playdate.graphics.imagetable.new("assets/2body-table-154-182")
+        --local bodyImgTbl = playdate.graphics.imagetable.new("assets/2body-table-154-182")
     
-        --self.bodyImgTbl = playdate.graphics.imagetable.new("assets/".. temp .. "body-table-154-182")
-        print(bodyImgTbl, NbodyNum, "b4 set img")
+        self.bodyImgTbl = playdate.graphics.imagetable.new("assets/".. temp .. "body-table-154-182")
+       -- print(bodyImgTbl, NbodyNum, "b4 set img")
     
         --new image
     
-        self.body = gfx.sprite.new(bodyImgTbl[NbodyNum])
+        self.body = gfx.sprite.new(self.bodyImgTbl[NbodyNum])
+      
     end

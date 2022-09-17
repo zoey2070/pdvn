@@ -143,7 +143,7 @@ scene["three"] = {
    -- Dx5(dx)
 
 
-    local dxpos = 300
+    local dxpos = 200
     local dx ={"111new math","@neeeww maaaaaath"}
         Dx5(dx,dxpos)
 
@@ -151,29 +151,10 @@ scene["three"] = {
          tick = function()
             playdate.drawFPS(10,10)
 
-            if playdate.buttonJustPressed(playdate.kButtonA) then
-            Dx5:update()
-            end
---[[
-
-        if playdate.buttonIsPressed(playdate.kButtonA) then
-
-           print("a press")
-           
-         --  gfx.clear() -- this works but tidy does not...
-       -- Dx5:tidy() --so this should remove em all...
-            Tidy2()
-        -- this is sending it to the first prefixinator
-          --  Dx5:tidy()
-          --Tidy2()
-
-            --TODO: multiple lines of dx in one thing :3
-            -- continue on a-press, but AUTO!
-
-          print("ran dx5 with", dx)
+            --so it doesn't have any dx bc.......... it's up there ^
+            Dx5:update() --needs to check if it even needs 
+      
           
-        end
-        --]]
         if playdate.buttonIsPressed(playdate.kButtonB) then
             Tidy2()
        -- local dxpos = 100
