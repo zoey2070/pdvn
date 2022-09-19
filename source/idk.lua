@@ -1,45 +1,84 @@
-
-
-textbox = gfx.sprite.new()
-textbox:setSize(220, 180)
-textbox:moveTo(200, 120)
-textbox:setZIndex(900)
-textbox.text = "" -- this is blank for now; we can set it at any point
-textbox.currentChar = 1 -- we'll use these for the animation
-textbox.currentText = ""
-textbox.typing = true
+class('printer').extends()
+function printer:init()
+printer.super.init(self)
 
 
 
-function textbox:update()
-	
-	self.currentChar = self.currentChar + 1
-	if self.currentChar > #self.text then
-		self.currentChar = #self.text
-	end
-	
-	if self.typing and self.currentChar <= #self.text then
-		textbox.currentText = string.sub(self.text, 1, self.currentChar)		
-		self:markDirty() -- this tells the sprite that it needs to redraw
-	end
-	
-	-- end typing
-	if self.currentChar == #self.text then
-		self.currentChar = 1
-		self.typing = false		
-	end	
+
+
+self.printMeter = 1
+self.linePos = 1
+self.kind = ""
+
+
+
+self.nvlimg = playdate.graphics.image.new(400, 240)
+
 end
 
 
-function textbox:draw()
-	
-	-- pushing context means, limit all the drawing config to JUST this block
-	-- that way, the colors we set etc. won't be stuck
-	gfx.pushContext()
-		-- draw the text!
-		gfx.drawTextInRect(self.currentText, 10, 10, 200, 160)
-		print("drawing")
-	
-	gfx.popContext()
-	
+class('Dx5').extends('printer')
+function Dx5:init(strings, names, expr, body, position)
+    Dx5.super.init(self)
+    
+    self.y = 150
+    self.pos = position
+    self.strings = strings
+	self.names = names
+	self.expressions = expr
+	self.body = body
+    self.aAllowed = false
+    self.printing = true
+    self.initprint = false
+
+
+
+    print(self.strings, "print self.string")
+    print("print str", self.strings[1], "lines:", #self.strings)
+
+    self.nboximg = playdate.graphics.image.new(400, 240)
+    self.tboximg = playdate.graphics.image.new(400,240)
+    if strings == nil then
+        print("bruh something's broke")
+        self.dx = "force"
+    else
+        
+    printer:continue()
+
+    end
+   
+    
+end
+
+
+
+
+function printer:continue()-- gets current dialogue
+
+    print(self.strings, "da strings") --why is this nil????
+
+    self.dx = self.strings[self.linePos]
+	self.currname = self.names[self.linePos]
+	self.currexpr = self.expr[self.linePos]
+	self.currbody = self.body[self.linePos]
+	self.currpos = self.pos[self.linePos]
+
+    print(self.aAllowed, "a.allowed in continue") ---- !!!!!!!!
+    print(self.printMeter, "print meter in main ctn") 
+
+
+    if self.printMeter == 4 then --then it is done printing.
+        self.aAllowed = true
+        self.linePos += 1
+        self.dx = self.strings[self.linePos]
+        print(self.linePos)
+        self.printMeter = 1 --resets....
+        self.printing = false --??? 
+
+        --if self.aAllowed == true and playdate.buttonIsPressed(playdate.kButtonA) then 
+            --why is this in here if it's in update? 
+        self:Pr1() --shouldn't need da strings if we got self.dx
+       -- end
+    end
+
 end

@@ -109,9 +109,9 @@ end
 
 scene["two"] = { --rewrite to go with the dialogue system.
     start = function ()
-    narrator = Character()
+    narrator = Spot(150,110,2,2)
     narrator:moveTo(150,150)
-    narrator.body:setBody(2)
+   -- narrator.body:setBody(2)
     narrator:add()
 
     --narrator:setZIndex(layers.character)
@@ -143,16 +143,21 @@ scene["three"] = {
    -- Dx5(dx)
 
 
-    local dxpos = 200
-    local dx ={"111new math","@neeeww maaaaaath"}
-        Dx5(dx,dxpos)
+  --  local dxpos = 200
+  --  local dx ={"111new math","@neeeww maaaaaath"}
+  --      Dx5(dx,dxpos)
+  
+  local dxpos = 200
+  local dx ={"111new math","@neeeww maaaaaath"}
+  printer(dx,dxpos)
+
 
     end,
          tick = function()
             playdate.drawFPS(10,10)
-
             --so it doesn't have any dx bc.......... it's up there ^
-            Dx5:update() --needs to check if it even needs 
+        Dx5:update() --needs to check if it even needs...
+            -- is it initializing it again?
       
           
         if playdate.buttonIsPressed(playdate.kButtonB) then

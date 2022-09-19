@@ -1,12 +1,23 @@
 import 'sceneselect'
-class('Dx5').extends()
-function Dx5:init(strings,dxpos)
+class('printer').extends()
+function printer:init() --shouldn't need the dxpos?
+printer.super.init(self)
+
+
+
+
+
+self.printMeter = 1
+self.linePos = 1
+self.kind = ""
+end
+
+class('Dx5').extends('printer')
+function Dx5:init(strings, dxpos)
     Dx5.super.init(self)
-    self.linePos = 1
+    
     self.y = 150
     self.pos = dxpos
-    self.printMeter = 1
-    self.kind = ""
 
     self.strings = strings
 
@@ -18,7 +29,7 @@ function Dx5:init(strings,dxpos)
 
 
     print(self.strings, "print self.string")
-    print("print str", strings[1], "lines:", #strings)
+    print("print str", self.strings[1], "lines:", #self.strings)
 
     self.nvlimg = playdate.graphics.image.new(400, 240)
     self.nboximg = playdate.graphics.image.new(400, 240)
@@ -28,7 +39,7 @@ function Dx5:init(strings,dxpos)
         self.dx = "force"
     else
         
-    self:continue(strings)
+    printer:continue()
 
     end
    
@@ -233,11 +244,11 @@ end
 
 
 
-function Dx5:continue(strings)-- gets current dialogue
+function printer:continue()-- gets current dialogue
 
-    print(self.strings, "da strings")
+    print(self.strings, "da strings") --why is this nil????
 
-    self.dx = strings[self.linePos]
+    self.dx = self.strings[self.linePos]
 
 
     print(self.aAllowed, "a.allowed in continue") ---- !!!!!!!!
@@ -252,9 +263,10 @@ function Dx5:continue(strings)-- gets current dialogue
         self.printMeter = 1 --resets....
         self.printing = false --??? 
 
-        if self.aAllowed == true and playdate.buttonIsPressed(playdate.kButtonA) then
+        --if self.aAllowed == true and playdate.buttonIsPressed(playdate.kButtonA) then 
+            --why is this in here if it's in update? 
         self:Pr1() --shouldn't need da strings if we got self.dx
-        end
+       -- end
     end
 
 
@@ -271,13 +283,14 @@ function Dx5:continue(strings)-- gets current dialogue
 
     if self.linePos < #self.strings then
         self.printing = true
-        self.aAllowed = false
+        self.aAllowed = true --mf if this is false how do you go to the next line...
         print(self.aAllowed, "a.allowed status if linepos is smaller than strings")
 
     elseif self.linePos == #self.strings then --check logic here -- this isn't running because the one has THREE FUCKING STRINGs.
         self.aAllowed = true
         self.linePos = 1
         --reset...
+        --THIS SHOULD BE WHEN ALL STRINGS ARE DONE, BATTABAM BATTABOOM, GO TO THE NEXT TABLE.
         print(self.aAllowed, "a.allowed status when linepos = strings")
      print("we outta lines...")
     else
@@ -344,6 +357,9 @@ end
 function Dx5:update()
     print("running update", self.aAllowed) --why is this returning nil?
 
+    printer:continue() --make this part of print??
+
+
     self.aAllowed = true --FUCK you
 
     if self.aAllowed == true and playdate.buttonIsPressed(playdate.kButtonA) then
@@ -354,7 +370,7 @@ function Dx5:update()
             print(self.aAllowed, "IF IT'S TRUE AND WE PRESSED A")
 
 
-            self:continue() --needs some Strings.
+            printer:continue() --needs some Strings.
 
     end
 

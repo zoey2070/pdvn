@@ -11,8 +11,10 @@ import 'CoreLibs/ui'
 scene = {}
 
 import 'scenes/one'
-import 'character'
-import 'dialoguesystem'
+--import 'character'
+import 'idk' --formerly dialogueSYSTEM
+import 'characterTEMPLATE'
+import 'characters'
 import 'dialogueTWITTER'
 import 'sceneselect'
 import 'menu'
