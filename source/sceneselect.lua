@@ -120,7 +120,7 @@ end,
      tick = function()    
         function playdate.BButtonUp()
         gfx.clear()
-        narrator.face:setEmote(1)
+        narrator.face:setEmote(1) --this returns nil...
        end --b button funct end
 end,
     close = function()
@@ -250,10 +250,21 @@ end
 scene["gallery"] = {
     start = function ()
         print("Gallery!")
+        
+
+        local gal1 = playdate.graphics.image.new("assets/AMtest3")
+      gal1s =  playdate.graphics.sprite.new(gal1)
+       gal1s:add()
+       gal1s:moveTo(120,120)
+
+--       playdate.graphics.image:draw(10,10,"assets/AMtest2")
+
 end,
      tick = function()
-    --this runs every frame
-end,
+
+    
+    
+    end,
     close = function()
        --when you close
 end
